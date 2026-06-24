@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+backend/.venv/
+.pytest_cache/
+*.egg-info/
+
+# Node / Next
+node_modules/
+.next/
+out/
+
+# Logs / scratch
+*.log
+backend/dev_out.log
+backend/dev_err.log
+backend/ws_check.py
+backend/record_sample.py
+frontend/web_out.log
+frontend/web_err.log
+
+# Recordings (the committed data/sample.jsonl is the exception, force-added)
+data/recordings/
+*.local
+
+# Env / OS
+.env
+.env.*.local
+.DS_Store
+Thumbs.db

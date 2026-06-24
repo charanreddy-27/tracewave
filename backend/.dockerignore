@@ -1,0 +1,11 @@
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+tests
+*.log
+dev_out.log
+dev_err.log
+ws_check.py
+record_sample.py
+.env

@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #090b0f;
+  color: #e7ebf2;
+}
+
+body {
+  /* subtle vignette + grid texture; data is the texture, this stays quiet */
+  background-image:
+    radial-gradient(1200px 600px at 70% -10%, rgba(52, 227, 200, 0.05), transparent 60%),
+    radial-gradient(900px 500px at 0% 0%, rgba(91, 157, 255, 0.04), transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Every number uses tabular figures so columns don't shift as values update. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "cv01" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Thin custom scrollbars for the anomaly feed. */
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: #1f2632;
+  border-radius: 999px;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Loading skeleton shimmer. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #11151d;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Keyboard focus ring — visible for keyboard users, quiet for mouse users. */
+:focus-visible {
+  outline: 2px solid #34e3c8;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect reduced-motion: kill the looping/entrance animations, keep content. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* uPlot dark theming to match the console. */
+.uplot,
+.uplot * {
+  font-family: var(--font-mono, ui-monospace, monospace) !important;
+}
+.u-axis {
+  color: #59616f;
+}
+.u-legend {
+  display: none;
+}
+.u-cursor-pt {
+  border-color: #34e3c8 !important;
+}
